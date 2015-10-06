@@ -6,7 +6,8 @@ Project forked from [Ian Kelling] (https://github.com/ian-kelling/python-example
 ------------
 * Made code base work with python 3 (sorted cmp has been deprecated in python 3; replace with key option).
 * Encapsulated the code.
-* handled exception for files not found.
+* handles exception for files not found.
+* handles encoding (this is unicode **utf-8**).
 
 command-line application that will calculate the ranking table for a soccer league.
 

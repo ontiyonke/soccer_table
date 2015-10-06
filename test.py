@@ -1,4 +1,5 @@
 #! /usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import unittest
 
@@ -76,6 +77,29 @@ class TestTable(unittest.TestCase):
         yield file_input.join(input.splitlines(True))
         t = Table(file_input=file_input)
         self.assertMultiLineEqual(t.display_teams(), expected_output)
+
+    def test_encoded_input(self):
+        """Test that our ranking output lines are generated and formatted correctly"""
+        input = """
+            リバプール 3, Манчестер Юнайтед 3
+            Tarantulas 2 1, FC Awesome 0
+            Lions 1, FC Awesome 1
+            Tarantulas 2 3, Манчестер Юнайтед 1
+            Lions 4, Grouches 0
+        """
+        expected_output = """
+            1. Tarantulas 2, 6 pts
+            2. Lions, 4 pts
+            3. FC Awesome, 1 pt
+            4. Манчестер Юнайтед, 1 pt
+            5. リバプール, 1 pt
+            6. Grouches, 0 pts
+        """
+        file_input = ''
+        yield file_input.join(input.splitlines(True))
+        t = Table(file_input=file_input)
+        self.assertMultiLineEqual(t.display_teams(), expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()

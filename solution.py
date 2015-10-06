@@ -1,6 +1,8 @@
 #! /usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import argparse
+import codecs
 import fileinput
 import re
 import sys
@@ -134,7 +136,7 @@ def get_input():
     if args.file:
         def lineGenerator():
             try:
-                with open(args.file) as f:
+                with codecs.open(args.file, encoding='utf-8') as f:
                     for line in f:
                         yield line
             except IOError:
